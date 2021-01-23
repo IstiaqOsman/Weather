@@ -7,18 +7,54 @@
     tools:context=".MainActivity"
     android:orientation="vertical"
     android:background="@drawable/rainy_back">
+
     <LinearLayout
+        android:id="@+id/scnd_sec"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_margin="25dp">
-        <TextView
+        <RelativeLayout
+            android:id="@+id/edit_text_search_btn"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/input_text"
+                android:layout_width="256dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/input_text"
+                android:layout_margin="5dp" />
+            <Button
+                android:id="@+id/search_btn"
+                android:text="Search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/input_text"
+                android:layout_marginTop="5dp"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="London, United Kingdom"
+            android:layout_gravity="center">
+        <TextView
+            android:id="@+id/city_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chittagong,"
             android:textSize="30dp"
-            android:gravity="center"
+            android:layout_centerVertical="true"
             android:textColor="@color/white"/>
+        <TextView
+            android:id="@+id/country_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/city_name"
+            android:text="BD"
+            android:textSize="30dp"
+            android:textColor="@color/white"/>
+        </RelativeLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,33 +70,33 @@
                     android:layout_marginStart="80dp"
                     android:layout_marginTop="38dp"/>
                 <TextView
-                    android:id="@+id/text_55"
+                    android:id="@+id/temperature_val"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="55'"
+                    android:text="55"
                     android:textSize="90dp"
                     android:textColor="@color/white"
                     android:layout_toEndOf="@id/icon_cloud"/>
-                <TextView
-                    android:id="@+id/text_temp_c"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/text_55"
-                    android:text="C"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="45dp"
-                    android:textColor="@color/white"
-                    android:textSize="15dp"/>
-                <TextView
-                    android:id="@+id/text_temp_f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/text_55"
-                    android:layout_below="@id/text_temp_c"
-                    android:text="F"
-                    android:layout_marginStart="20dp"
-                    android:textColor="@color/white"
-                    android:textSize="15dp"/>
+<!--                <TextView-->
+<!--                    android:id="@+id/text_temp_c"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_toEndOf="@id/text_55"-->
+<!--                    android:text="C"-->
+<!--                    android:layout_marginStart="20dp"-->
+<!--                    android:layout_marginTop="45dp"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="15dp"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/text_temp_f"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_toEndOf="@id/text_55"-->
+<!--                    android:layout_below="@id/text_temp_c"-->
+<!--                    android:text="F"-->
+<!--                    android:layout_marginStart="20dp"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="15dp"/>-->
             </RelativeLayout>
         </LinearLayout>
         <LinearLayout
@@ -69,36 +105,125 @@
             android:orientation="vertical"
             android:gravity="center">
             <TextView
+                android:id="@+id/description_val"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Light Rain"
-                android:textSize="30dp"
+                android:textSize="30sp"
                 android:textColor="@color/white"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"/>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
             <TextView
+                android:id="@+id/updated_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Updated as of 2:15PM"
-                android:textSize="15dp"
+                android:text="Updated as of "
+                android:textSize="15sp"
                 android:textColor="@color/white"
                 android:padding="5dp"/>
-            <TextView
+
+                <TextView
+                    android:id="@+id/current_time_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2:15PM"
+                    android:textSize="15sp"
+                    android:layout_toEndOf="@id/updated_text"
+                    android:textColor="@color/white"
+                    android:padding="5dp"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/feels_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Feels Like"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:padding="5dp"/>
+
+                <TextView
+                    android:id="@+id/feels_like_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="55"
+                    android:textSize="15sp"
+                    android:layout_toEndOf="@id/feels_like"
+                    android:textColor="@color/white"
+                    android:padding="5dp"/>
+
+                <TextView
+                    android:id="@+id/wind_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Wind"
+                    android:textSize="15sp"
+                    android:layout_toEndOf="@id/feels_like_val"
+                    android:textColor="@color/white"
+                    android:padding="5dp"/>
+                <TextView
+                    android:id="@+id/wind_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6"
+                    android:textSize="15sp"
+                    android:layout_toEndOf="@id/wind_text"
+                    android:textColor="@color/white"
+                    android:padding="5dp"/>
+                <TextView
+                    android:id="@+id/mph_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" mph"
+                    android:textSize="15sp"
+                    android:layout_toEndOf="@id/wind_val"
+                    android:textColor="@color/white"
+                    android:padding="5dp"/>
+            </RelativeLayout>
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Feels Like 55'       Wind  6 mph"
-                android:textSize="15dp"
-                android:textColor="@color/white"
-                android:padding="5dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Barometer  29.97 in       Humidity 88 %"
-                android:textSize="15dp"
-                android:textColor="@color/white"
-                android:padding="5dp"/>
+                android:layout_gravity="center">
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Barometer  29.97 in       Humidity 88 %"-->
+<!--                android:textSize="15dp"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:padding="5dp"/>-->
+                <TextView
+                    android:id="@+id/humidity_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Humidity"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:padding="5dp"/>
+                <TextView
+                    android:id="@+id/humidity_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="88%"
+                    android:textSize="15sp"
+                    android:layout_toEndOf="@id/humidity_txt"
+                    android:textColor="@color/white"
+                    android:padding="5dp"/>
+            </RelativeLayout>
         </LinearLayout>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/daily_txt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Daily"
@@ -107,19 +232,13 @@
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:layout_marginStart="5dp"/>
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
         <LinearLayout
             android:id="@+id/layout_1"
             android:layout_width="135dp"
             android:layout_height="200dp"
             android:orientation="vertical"
-            android:padding="15dp">
+            android:padding="15dp"
+            android:layout_below="@id/daily_txt">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -164,11 +283,12 @@
             android:layout_height="200dp"
             android:orientation="vertical"
             android:padding="15dp"
-            android:layout_toEndOf="@id/layout_1">
+            android:layout_toEndOf="@id/layout_1"
+            android:layout_below="@id/daily_txt">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tuesday 15"
+                android:text="Tuesday 16"
                 android:textColor="@color/white"
                 android:textSize="15dp"/>
             <ImageView
@@ -209,11 +329,12 @@
             android:layout_height="200dp"
             android:orientation="vertical"
             android:padding="15dp"
-            android:layout_toEndOf="@id/layout_2">
+            android:layout_toEndOf="@id/layout_2"
+            android:layout_below="@id/daily_txt">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tuesday 15"
+                android:text="Tuesday 17"
                 android:textColor="@color/white"
                 android:textSize="15dp"/>
             <ImageView
@@ -249,34 +370,34 @@
                 android:textSize="18dp"/>
         </LinearLayout>
     </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
-        <TextView
-            android:id="@+id/text_hourly"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="35dp"
-            android:text="Hourly"/>
-        <ImageView
-            android:id="@+id/icon_chart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_bar_chart"
-            android:layout_toEndOf="@id/text_hourly"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="210dp"
-            android:padding="5dp"/>
-        <ImageView
-            android:id="@+id/icon_notes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_notes"
-            android:layout_toEndOf="@id/icon_chart"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="10dp"
-            android:padding="5dp"/>
-    </RelativeLayout>
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp">-->
+<!--        <TextView-->
+<!--            android:id="@+id/text_hourly"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="35dp"-->
+<!--            android:text="Hourly"/>-->
+<!--        <ImageView-->
+<!--            android:id="@+id/icon_chart"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/ic_bar_chart"-->
+<!--            android:layout_toEndOf="@id/text_hourly"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:layout_marginStart="210dp"-->
+<!--            android:padding="5dp"/>-->
+<!--        <ImageView-->
+<!--            android:id="@+id/icon_notes"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/ic_notes"-->
+<!--            android:layout_toEndOf="@id/icon_chart"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:padding="5dp"/>-->
+<!--    </RelativeLayout>-->
 </LinearLayout>
